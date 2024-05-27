@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import Cards from './components/Cards/Cards';
@@ -7,36 +7,41 @@ import Pagination from './components/Pagination/Pagination';
 import Filters from './components/Filters/Filters';
 
 const App = () => {
+  const [pageNo, setPageNo] = useState(1);
+  const [fetchedData, setFetchedData] = useState([]);
+  const { info, results } = fetchedData;
+  console.log(fetchedData);
+
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNo}`;
+
+  useEffect(() => {
+    (async function() {
+      let data = await fetch(api).then(res => res.json());
+      setFetchedData(data);
+    })();
+  }, [api]);
+
   return (
     <>
-    <h1 className='text-center ubuntu my-4'>Rick&Morty  <span className="text-primary">Wiki</span></h1>
-    <div className="container">
-
-      <div className="row">
-
-        <div className="col-3">
-        <Filters/>
-        </div>
-
-        <div className="col-8">
-          <div className="raw">
-           
+      <h1 className='text-center ubuntu my-4'>Rick & Morty <span className="text-primary">Wiki</span></h1>
+      <div className="container">
+        <div className="row">
+          <div className="col-3">
+            <Filters />
           </div>
-       
+          <div className="col-8">
+            <div className="row">
+             
+                <Cards results={results}  />
+           
+            </div>
+          </div>
         </div>
-
       </div>
-
-
-
-
-    </div>
-    <Search/>
-    
-   
-    <Pagination/>
+      <Search />
+      <Pagination pageNo={pageNo} setPageNo={setPageNo} info={info} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
