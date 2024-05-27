@@ -9,16 +9,31 @@ import Filters from './components/Filters/Filters';
 const App = () => {
   return (
     <>
-    <h1 className='text-center'>RickMorty</h1>
+    <h1 className='text-center ubuntu my-4'>Rick&Morty  <span className="text-primary">Wiki</span></h1>
     <div className="container">
+
       <div className="row">
-        <div className="col-3"></div>
-        <div className="col-4"></div>
+
+        <div className="col-3">
+        <Filters/>
+        </div>
+
+        <div className="col-8">
+          <div className="raw">
+           
+          </div>
+       
+        </div>
+
       </div>
+
+
+
+
     </div>
     <Search/>
-    <Filters/>
-    <Cards/>
+    
+   
     <Pagination/>
     </>
   )
