@@ -8,11 +8,12 @@ import Filters from './components/Filters/Filters';
 
 const App = () => {
   const [pageNo, setPageNo] = useState(1);
+  const [search, setSearch] = useState("");
   const [fetchedData, setFetchedData] = useState([]);
   const { info, results } = fetchedData;
   console.log(fetchedData);
 
-  let api = `https://rickandmortyapi.com/api/character/?page=${pageNo}`;
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNo}&name=${search}`;
 
   useEffect(() => {
     (async function() {
@@ -24,6 +25,8 @@ const App = () => {
   return (
     <>
       <h1 className='text-center ubuntu my-4'>Rick & Morty <span className="text-primary">Wiki</span></h1>
+     
+      <Search setSearch={setSearch} setPageNo={setPageNo} />
       <div className="container">
         <div className="row">
           <div className="col-3">
@@ -38,8 +41,8 @@ const App = () => {
           </div>
         </div>
       </div>
-      <Search />
-      <Pagination pageNo={pageNo} setPageNo={setPageNo} info={info} />
+     
+      <Pagination pageNo={pageNo} setPageNo={setPageNo}  />
     </>
   );
 }
