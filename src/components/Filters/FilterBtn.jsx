@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const FilterBtn = ({name,index,items}) => {
+const FilterBtn = ({name,index,items,task,setPageNo}) => {
   const [selectedOption, setSelectedOption] = useState('flexRadioDefault1');
 
   const handleChange = (event) => {
@@ -24,6 +24,12 @@ const FilterBtn = ({name,index,items}) => {
 
       <div className="form-check">
         <input 
+        onClick={()=>{
+          setPageNo(1);
+          task(items);
+
+
+        }}  
           className="form-check-input x" 
           type="radio" 
           name={name} 

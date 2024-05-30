@@ -9,11 +9,13 @@ import Filters from './components/Filters/Filters';
 const App = () => {
   const [pageNo, setPageNo] = useState(1);
   const [search, setSearch] = useState("");
-  const [fetchedData, setFetchedData] = useState([]);
+  let [status,setStatus] = useState("Dead")
+  
+  const [fetchedData, setFetchedData] = useState("");
   const { info, results } = fetchedData;
   console.log(fetchedData);
 
-  let api = `https://rickandmortyapi.com/api/character/?page=${pageNo}&name=${search}`;
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNo}&name=${search}&status=${status}`;
 
   useEffect(() => {
     (async function() {
@@ -30,7 +32,7 @@ const App = () => {
       <div className="container">
         <div className="row">
           
-            <Filters />
+            <Filters setStatus={setStatus} setPageNo={setPageNo} />
           
           <div className="col-8">
             <div className="row">

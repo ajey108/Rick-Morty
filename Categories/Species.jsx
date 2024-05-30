@@ -23,7 +23,7 @@ const Species = () => {
       </button>
     </h2>
     <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div className="accordion-body">
+      <div className="accordion-body d-flex flex-wrap gap-3 ">
 
       {species.map((items,index)=>(    
           <FilterBtn key={index} name="status" index={index} items={items} />

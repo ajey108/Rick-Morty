@@ -1,7 +1,7 @@
 import React from 'react'
 import FilterBtn from '../src/components/Filters/FilterBtn'
 
-const Status = () => {
+const Status = ({setStatus,setPageNo}) => {
   
     let status =["Alive","Dead","Unknow"]
 
@@ -15,10 +15,10 @@ const Status = () => {
       </button>
     </h2>
     <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div className="accordion-body">
+      <div className="accordion-body d-flex flex-wrap gap-3">
 
         {status.map((items,index)=>(    
-          <FilterBtn key={index} name="status" index={index} items={items} />
+          <FilterBtn setPageNo={setPageNo} task={setStatus} key={index} name="status" index={index} items={items} />
          ))}
         
       </div>
