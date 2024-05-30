@@ -5,10 +5,21 @@ import Status from '../../../Categories/Status'
 import FilterBtn from './FilterBtn'
 
 const Filters = ({setStatus,setPageNo,setGender,setSpecies}) => {
+
+  let clear =()=>{
+    setStatus("")
+    setPageNo("")
+    setGender("")
+    setSpecies("")
+    window.location.reload(false);
+  }
   return (
     <div className="col-3">
       <div className="text-center fs-bold fs-4 mb-4">Filter</div>
-      <div style={{cursor:"pointer"}}
+      <div 
+      
+      onClick={clear}
+      style={{cursor:"pointer"}}
       
       className="text-center text-primary  text-decoration-underline">Clearfilters</div>
 
