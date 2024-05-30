@@ -4,7 +4,7 @@ import Species from '../../../Categories/Species'
 import Status from '../../../Categories/Status'
 import FilterBtn from './FilterBtn'
 
-const Filters = ({setStatus,setPageNo,setGender}) => {
+const Filters = ({setStatus,setPageNo,setGender,setSpecies}) => {
   return (
     <div className="col-3">
       <div className="text-center fs-bold fs-4 mb-4">Filter</div>
@@ -18,7 +18,7 @@ const Filters = ({setStatus,setPageNo,setGender}) => {
 
 
 <Status setPageNo={setPageNo} setStatus={setStatus}/>
-<Species/>
+<Species setSpecies={setSpecies} setPageNo={setPageNo}/>
 <Gender setGender={setGender} setPageNo={setPageNo}/>
 
  
