@@ -5,8 +5,27 @@ import Cards from './components/Cards/Cards';
 import Search from './components/Search/Search';
 import Pagination from './components/Pagination/Pagination';
 import Filters from './components/Filters/Filters';
+import Navbar from './Navbar/Navbar';
+import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
+import Episodes from './Pages/Episodes';
+import Location from './Pages/Location';
 
-const App = () => {
+
+function App(){
+  return(
+    <Router>
+      <div className="App">
+      <Navbar/>
+      </div>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/episodes" element={<Episodes/>}/>
+        <Route path="/location" element={<Location/>}/>
+      </Routes>
+    </Router>
+  )
+}
+const Home = () => {
   const [pageNo, setPageNo] = useState(1);
   const [search, setSearch] = useState("");
   let [status,setStatus] = useState("");
@@ -28,8 +47,11 @@ const App = () => {
 
   return (
     <>
-      <h1 className='text-center ubuntu my-4'>Rick & Morty <span className="text-primary">Wiki</span></h1>
+    <div className="container">
+
+    
      
+      
       <Search setSearch={setSearch} setPageNo={setPageNo} />
       <div className="container">
         <div className="row">
@@ -47,6 +69,7 @@ const App = () => {
       </div>
      
       <Pagination pageNo={pageNo} setPageNo={setPageNo} info={info}  />
+      </div>
     </>
   );
 }
